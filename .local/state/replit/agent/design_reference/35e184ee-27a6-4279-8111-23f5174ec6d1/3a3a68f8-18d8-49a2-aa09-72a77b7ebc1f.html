@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Chen - Cybersecurity | Photography | Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    border: "var(--border)",
+                    ring: "var(--ring)",
+                    cyber: {
+                        blue: "#00D4FF",
+                        purple: "#9933FF", 
+                        green: "#00FF66",
+                        pink: "#FF00FF"
+                    }
+                },
+                fontFamily: {
+                    sans: ["Inter", "sans-serif"],
+                    mono: ["JetBrains Mono", "monospace"],
+                    tech: ["Orbitron", "monospace"]
+                },
+                animation: {
+                    'float': 'float 6s ease-in-out infinite',
+                    'glow': 'glow 2s ease-in-out infinite alternate',
+                    'slide-up': 'slideUp 0.6s ease-out',
+                    'fade-in': 'fadeIn 0.8s ease-out'
+                }
+            },
+        }
+    };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --background: hsl(0 0% 4%);
+            --foreground: hsl(0 0% 95%);
+            --card: hsl(240 10% 8%);
+            --card-foreground: hsl(0 0% 95%);
+            --primary: hsl(194 100% 50%);
+            --primary-foreground: hsl(0 0% 0%);
+            --secondary: hsl(270 100% 40%);
+            --secondary-foreground: hsl(0 0% 100%);
+            --muted: hsl(240 10% 15%);
+            --muted-foreground: hsl(240 5% 64%);
+            --accent: hsl(140 100% 60%);
+            --accent-foreground: hsl(0 0% 0%);
+            --border: hsl(240 10% 15%);
+            --ring: hsl(194 100% 50%);
+            --radius: 8px;
+        }
+
+        .light-mode {
+            --background: hsl(0 0% 98%);
+            --foreground: hsl(240 10% 15%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(240 10% 15%);
+            --primary: hsl(194 80% 40%);
+            --primary-foreground: hsl(0 0% 100%);
+            --secondary: hsl(270 80% 60%);
+            --secondary-foreground: hsl(0 0% 100%);
+            --muted: hsl(210 40% 96%);
+            --muted-foreground: hsl(215 16% 47%);
+            --accent: hsl(140 80% 40%);
+            --accent-foreground: hsl(0 0% 100%);
+            --border: hsl(214 32% 91%);
+            --ring: hsl(194 80% 40%);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 20px var(--primary); }
+            100% { box-shadow: 0 0 40px var(--primary), 0 0 60px var(--primary); }
+        }
+
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .cyber-grid {
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .terminal-effect {
+            background: linear-gradient(45deg, rgba(0, 20, 0, 0.8), rgba(0, 40, 0, 0.9));
+            border: 1px solid #00FF66;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .neon-border {
+            border: 2px solid transparent;
+            background: linear-gradient(var(--card), var(--card)) padding-box,
+                        linear-gradient(45deg, var(--primary), var(--secondary), var(--accent)) border-box;
+        }
+
+        .glass-effect {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hover-tilt {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-tilt:hover {
+            transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            transform-origin: 0%;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans overflow-x-hidden">
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator" style="transform: scaleX(0);"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-effect">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-tech font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    AC
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-primary transition-colors">Home</a>
+                    <a href="#about" class="hover:text-primary transition-colors">About</a>
+                    <a href="#cybersecurity" class="hover:text-primary transition-colors">Cybersecurity</a>
+                    <a href="#photography" class="hover:text-primary transition-colors">Photography</a>
+                    <a href="#design" class="hover:text-primary transition-colors">Design</a>
+                    <a href="#projects" class="hover:text-primary transition-colors">Projects</a>
+                    <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-muted transition-colors">
+                        <i class="fas fa-moon text-lg"></i>
+                    </button>
+                    
+                    <!-- Mobile Menu -->
+                    <button class="md:hidden p-2">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden cyber-grid">
+        <!-- 3D Background Particles -->
+        <div class="absolute inset-0 z-0">
+            <!-- TODO: Implement Three.js particle system with React Three Fiber -->
+            <div class="absolute top-20 left-20 w-2 h-2 bg-primary rounded-full animate-float opacity-60"></div>
+            <div class="absolute top-40 right-32 w-1 h-1 bg-accent rounded-full animate-float opacity-80" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-32 left-1/4 w-3 h-3 bg-secondary rounded-full animate-float opacity-40" style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/3 right-1/4 w-2 h-2 bg-cyber-pink rounded-full animate-float opacity-70" style="animation-delay: 3s;"></div>
+        </div>
+
+        <div class="container mx-auto px-6 text-center z-10">
+            <div class="animate-slide-up">
+                <h1 class="text-6xl md:text-8xl font-tech font-black mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                    ALEX CHEN
+                </h1>
+                <div class="text-xl md:text-2xl font-mono mb-8 text-muted-foreground">
+                    <span class="text-primary">Cybersecurity Enthusiast</span> |
+                    <span class="text-secondary">Photographer</span> |
+                    <span class="text-accent">Designer</span>
+                </div>
+                <p class="text-lg mb-12 max-w-2xl mx-auto text-muted-foreground">
+                    Protecting digital worlds, capturing moments, and crafting experiences through code and creativity.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:shadow-lg hover:shadow-primary/25 transition-all hover-tilt">
+                        View My Work
+                    </button>
+                    <button class="px-8 py-4 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-all">
+                        Download CV
+                    </button>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <i class="fas fa-chevron-down text-2xl text-primary"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-card">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- 3D Avatar/Photo Card -->
+                <div class="relative">
+                    <!-- Professional headshot of a young tech professional -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800" 
+                         alt="Alex Chen Professional Photo" 
+                         class="w-full max-w-md mx-auto rounded-2xl neon-border hover-tilt" />
+                    
+                    <!-- Floating Tech Icons -->
+                    <div class="absolute -top-4 -right-4 p-3 bg-primary rounded-xl animate-float">
+                        <i class="fas fa-shield-alt text-primary-foreground text-xl"></i>
+                    </div>
+                    <div class="absolute -bottom-4 -left-4 p-3 bg-secondary rounded-xl animate-float" style="animation-delay: 1s;">
+                        <i class="fas fa-camera text-secondary-foreground text-xl"></i>
+                    </div>
+                    <div class="absolute top-1/2 -right-8 p-3 bg-accent rounded-xl animate-float" style="animation-delay: 2s;">
+                        <i class="fas fa-palette text-accent-foreground text-xl"></i>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <h2 class="text-4xl font-tech font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                        About Me
+                    </h2>
+                    <div class="space-y-4 text-muted-foreground">
+                        <p class="text-lg">
+                            I'm a passionate technologist who bridges the gap between security, creativity, and innovation. 
+                            With expertise in cybersecurity, I protect digital assets while capturing the world through my lens.
+                        </p>
+                        <p>
+                            My journey spans from implementing robust security protocols to creating visually stunning designs 
+                            that tell compelling stories. I believe in the power of technology to create positive change.
+                        </p>
+                    </div>
+                    
+                    <!-- Skills Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+                        <div class="p-4 glass-effect rounded-lg text-center hover-tilt">
+                            <i class="fas fa-lock text-primary text-2xl mb-2"></i>
+                            <div class="font-semibold">Security</div>
+                        </div>
+                        <div class="p-4 glass-effect rounded-lg text-center hover-tilt">
+                            <i class="fas fa-code text-secondary text-2xl mb-2"></i>
+                            <div class="font-semibold">Development</div>
+                        </div>
+                        <div class="p-4 glass-effect rounded-lg text-center hover-tilt">
+                            <i class="fas fa-camera text-accent text-2xl mb-2"></i>
+                            <div class="font-semibold">Photography</div>
+                        </div>
+                        <div class="p-4 glass-effect rounded-lg text-center hover-tilt">
+                            <i class="fas fa-paint-brush text-primary text-2xl mb-2"></i>
+                            <div class="font-semibold">Design</div>
+                        </div>
+                        <div class="p-4 glass-effect rounded-lg text-center hover-tilt">
+                            <i class="fas fa-brain text-secondary text-2xl mb-2"></i>
+                            <div class="font-semibold">Strategy</div>
+                        </div>
+                        <div class="p-4 glass-effect rounded-lg text-center hover-tilt">
+                            <i class="fas fa-users text-accent text-2xl mb-2"></i>
+                            <div class="font-semibold">Leadership</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cybersecurity Section -->
+    <section id="cybersecurity" class="py-20 relative">
+        <!-- Dark server room with cables and equipment -->
+        <div class="absolute inset-0 z-0" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080'); background-size: cover; background-position: center;">
+            <div class="absolute inset-0 bg-background/90"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-tech font-bold mb-4 text-accent">
+                    <i class="fas fa-shield-alt mr-4"></i>CYBERSECURITY
+                </h2>
+                <p class="text-xl text-muted-foreground">Defending against threats in the digital frontier</p>
+            </div>
+
+            <!-- Terminal-style showcase -->
+            <div class="terminal-effect rounded-xl p-8 mb-12 font-mono">
+                <div class="flex items-center mb-4">
+                    <div class="flex space-x-2 mr-4">
+                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    </div>
+                    <div class="text-accent">alex@security:~$</div>
+                </div>
+                <div class="text-accent space-y-2">
+                    <div>> Initializing security protocols...</div>
+                    <div>> Scanning for vulnerabilities...</div>
+                    <div>> Implementing defense mechanisms...</div>
+                    <div class="text-green-400">> System secured successfully ✓</div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Expertise Cards -->
+                <div class="glass-effect p-6 rounded-xl hover-tilt">
+                    <div class="text-3xl text-primary mb-4">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Network Security</h3>
+                    <p class="text-muted-foreground">Designing secure network architectures and implementing robust firewall configurations.</p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Wireshark</span>
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">pfSense</span>
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Nmap</span>
+                    </div>
+                </div>
+
+                <div class="glass-effect p-6 rounded-xl hover-tilt">
+                    <div class="text-3xl text-secondary mb-4">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Penetration Testing</h3>
+                    <p class="text-muted-foreground">Identifying vulnerabilities through ethical hacking and comprehensive security assessments.</p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-sm">Metasploit</span>
+                        <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-sm">Burp Suite</span>
+                        <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-sm">Kali Linux</span>
+                    </div>
+                </div>
+
+                <div class="glass-effect p-6 rounded-xl hover-tilt">
+                    <div class="text-3xl text-accent mb-4">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Threat Detection</h3>
+                    <p class="text-muted-foreground">Advanced monitoring and incident response using cutting-edge SIEM solutions.</p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm">Splunk</span>
+                        <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm">ELK Stack</span>
+                        <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm">OSSEC</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="mt-16 text-center">
+                <h3 class="text-2xl font-semibold mb-8">Certifications</h3>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <div class="px-6 py-3 border border-primary text-primary rounded-lg">CISSP</div>
+                    <div class="px-6 py-3 border border-secondary text-secondary rounded-lg">CEH</div>
+                    <div class="px-6 py-3 border border-accent text-accent rounded-lg">OSCP</div>
+                    <div class="px-6 py-3 border border-primary text-primary rounded-lg">Security+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photography Section -->
+    <section id="photography" class="py-20 bg-card">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-tech font-bold mb-4 text-secondary">
+                    <i class="fas fa-camera mr-4"></i>PHOTOGRAPHY
+                </h2>
+                <p class="text-xl text-muted-foreground">Capturing moments through light and emotion</p>
+            </div>
+
+            <!-- 3D Photo Gallery -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Urban cityscape at golden hour -->
+                <div class="group relative overflow-hidden rounded-xl hover-tilt">
+                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Urban cityscape photography" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h4 class="font-semibold">Urban Landscapes</h4>
+                            <p class="text-sm opacity-80">City architecture & street photography</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portrait photography in natural light -->
+                <div class="group relative overflow-hidden rounded-xl hover-tilt">
+                    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Portrait photography" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h4 class="font-semibold">Portrait Series</h4>
+                            <p class="text-sm opacity-80">Professional & artistic portraits</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nature landscape with dramatic lighting -->
+                <div class="group relative overflow-hidden rounded-xl hover-tilt">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Nature landscape photography" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h4 class="font-semibold">Nature Escapes</h4>
+                            <p class="text-sm opacity-80">Landscape & adventure photography</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Abstract architectural details -->
+                <div class="group relative overflow-hidden rounded-xl hover-tilt">
+                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Abstract architecture photography" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h4 class="font-semibold">Abstract Forms</h4>
+                            <p class="text-sm opacity-80">Geometric & minimal compositions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event photography -->
+                <div class="group relative overflow-hidden rounded-xl hover-tilt">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Event photography" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h4 class="font-semibold">Event Coverage</h4>
+                            <p class="text-sm opacity-80">Corporate & social events</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Travel photography -->
+                <div class="group relative overflow-hidden rounded-xl hover-tilt">
+                    <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Travel photography" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h4 class="font-semibold">Travel Stories</h4>
+                            <p class="text-sm opacity-80">Cultural & destination photography</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photography Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+                <div class="text-center">
+                    <div class="text-3xl font-tech font-bold text-primary mb-2">500+</div>
+                    <div class="text-muted-foreground">Photos Captured</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-tech font-bold text-secondary mb-2">50+</div>
+                    <div class="text-muted-foreground">Events Covered</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-tech font-bold text-accent mb-2">25+</div>
+                    <div class="text-muted-foreground">Happy Clients</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-tech font-bold text-primary mb-2">5</div>
+                    <div class="text-muted-foreground">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Section -->
+    <section id="design" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-tech font-bold mb-4 text-primary">
+                    <i class="fas fa-palette mr-4"></i>DESIGN
+                </h2>
+                <p class="text-xl text-muted-foreground">Creating digital experiences that inspire and engage</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- UI/UX Design showcase -->
+                <div class="glass-effect p-8 rounded-xl hover-tilt">
+                    <!-- Modern web design on desktop screen -->
+                    <img src="https://images.unsplash.com/photo-1561736778-92e52a7769ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="UI/UX design showcase" 
+                         class="w-full h-48 object-cover rounded-lg mb-6" />
+                    <h3 class="text-2xl font-semibold mb-4 text-primary">UI/UX Design</h3>
+                    <p class="text-muted-foreground mb-4">
+                        Crafting intuitive user interfaces and seamless user experiences for web and mobile applications.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Figma</span>
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Adobe XD</span>
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Sketch</span>
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Prototyping</span>
+                    </div>
+                </div>
+
+                <!-- Brand Identity -->
+                <div class="glass-effect p-8 rounded-xl hover-tilt">
+                    <!-- Brand identity design materials -->
+                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Brand identity design" 
+                         class="w-full h-48 object-cover rounded-lg mb-6" />
+                    <h3 class="text-2xl font-semibold mb-4 text-secondary">Brand Identity</h3>
+                    <p class="text-muted-foreground mb-4">
+                        Developing cohesive brand identities that communicate values and create lasting impressions.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-sm">Logo Design</span>
+                        <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-sm">Typography</span>
+                        <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-sm">Color Theory</span>
+                        <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-sm">Style Guides</span>
+                    </div>
+                </div>
+
+                <!-- Motion Graphics -->
+                <div class="glass-effect p-8 rounded-xl hover-tilt">
+                    <!-- Video editing and motion graphics -->
+                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Motion graphics design" 
+                         class="w-full h-48 object-cover rounded-lg mb-6" />
+                    <h3 class="text-2xl font-semibold mb-4 text-accent">Motion Graphics</h3>
+                    <p class="text-muted-foreground mb-4">
+                        Bringing designs to life through animation and interactive motion graphics that engage users.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm">After Effects</span>
+                        <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm">Cinema 4D</span>
+                        <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm">Lottie</span>
+                        <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm">CSS Animation</span>
+                    </div>
+                </div>
+
+                <!-- Web Development -->
+                <div class="glass-effect p-8 rounded-xl hover-tilt">
+                    <!-- Clean code on multiple screens -->
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Web development code" 
+                         class="w-full h-48 object-cover rounded-lg mb-6" />
+                    <h3 class="text-2xl font-semibold mb-4 text-primary">Web Development</h3>
+                    <p class="text-muted-foreground mb-4">
+                        Building responsive, performant websites that bring designs to life with clean, maintainable code.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">React</span>
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Next.js</span>
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Three.js</span>
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Tailwind CSS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-card">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-tech font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    <i class="fas fa-rocket mr-4"></i>PROJECTS
+                </h2>
+                <p class="text-xl text-muted-foreground">Showcasing innovation across security, creativity, and technology</p>
+            </div>
+
+            <!-- Project Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="px-6 py-2 bg-primary text-primary-foreground rounded-lg font-semibold">All</button>
+                <button class="px-6 py-2 border border-muted text-muted-foreground rounded-lg hover:border-primary hover:text-primary transition-colors">Security</button>
+                <button class="px-6 py-2 border border-muted text-muted-foreground rounded-lg hover:border-primary hover:text-primary transition-colors">Web Dev</button>
+                <button class="px-6 py-2 border border-muted text-muted-foreground rounded-lg hover:border-primary hover:text-primary transition-colors">Design</button>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Security Dashboard Project -->
+                <div class="group glass-effect rounded-xl overflow-hidden hover-tilt">
+                    <!-- Cybersecurity dashboard interface -->
+                    <img src="https://images.unsplash.com/photo-1551808525-51a94da548ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" 
+                         alt="Security dashboard interface" 
+                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-semibold">SecureOps Dashboard</h3>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">Security</span>
+                        </div>
+                        <p class="text-muted-foreground mb-4">
+                            Real-time security monitoring dashboard with threat intelligence and incident response workflows.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">React</span>
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">Python</span>
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">ELK Stack</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-primary hover:text-primary/80 transition-colors">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                            <a href="#" class="text-primary hover:text-primary/80 transition-colors">
+                                <i class="fas fa-external-link-alt text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photography Portfolio Site -->
+                <div class="group glass-effect rounded-xl overflow-hidden hover-tilt">
+                    <!-- Photography portfolio website -->
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" 
+                         alt="Photography portfolio website" 
+                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-semibold">LensStory Portfolio</h3>
+                            <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">Web Dev</span>
+                        </div>
+                        <p class="text-muted-foreground mb-4">
+                            Elegant photography portfolio with 3D galleries, lightbox effects, and client management system.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">Next.js</span>
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">Three.js</span>
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">Framer Motion</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-primary hover:text-primary/80 transition-colors">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                            <a href="#" class="text-primary hover:text-primary/80 transition-colors">
+                                <i class="fas fa-external-link-alt text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand Identity Project -->
+                <div class="group glass-effect rounded-xl overflow-hidden hover-tilt">
+                    <!-- Modern brand identity design -->
+                    <img src="https://images.unsplash.com/photo-1636819488537-a9b1ffb315ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" 
+                         alt="Brand identity design project" 
+                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-semibold">TechNova Branding</h3>
+                            <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">Design</span>
+                        </div>
+                        <p class="text-muted-foreground mb-4">
+                            Complete brand identity redesign for a fintech startup including logo, style guide, and marketing materials.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">Figma</span>
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">Illustrator</span>
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">InDesign</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-primary hover:text-primary/80 transition-colors">
+                                <i class="fas fa-external-link-alt text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vulnerability Scanner -->
+                <div class="group glass-effect rounded-xl overflow-hidden hover-tilt">
+                    <!-- Network security scanning tool -->
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" 
+                         alt="Vulnerability scanning tool" 
+                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-semibold">VulnHunter Pro</h3>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">Security</span>
+                        </div>
+                        <p class="text-muted-foreground mb-4">
+                            Automated vulnerability scanning tool with machine learning threat detection and detailed reporting.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">Python</span>
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">TensorFlow</span>
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">Docker</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-primary hover:text-primary/80 transition-colors">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-commerce Platform -->
+                <div class="group glass-effect rounded-xl overflow-hidden hover-tilt">
+                    <!-- Modern e-commerce interface -->
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" 
+                         alt="E-commerce platform interface" 
+                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-semibold">CraftMarket Platform</h3>
+                            <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">Web Dev</span>
+                        </div>
+                        <p class="text-muted-foreground mb-4">
+                            Full-stack e-commerce platform for artisans with secure payments, inventory management, and analytics.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">React</span>
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">Node.js</span>
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">MongoDB</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-primary hover:text-primary/80 transition-colors">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                            <a href="#" class="text-primary hover:text-primary/80 transition-colors">
+                                <i class="fas fa-external-link-alt text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile App Design -->
+                <div class="group glass-effect rounded-xl overflow-hidden hover-tilt">
+                    <!-- Mobile app design mockups -->
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" 
+                         alt="Mobile app design mockups" 
+                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-semibold">MindfulnessApp UX</h3>
+                            <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">Design</span>
+                        </div>
+                        <p class="text-muted-foreground mb-4">
+                            User experience design for meditation app with personalized wellness journeys and progress tracking.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">Figma</span>
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">Principle</span>
+                            <span class="px-2 py-1 bg-muted/50 text-xs rounded">User Research</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-primary hover:text-primary/80 transition-colors">
+                                <i class="fas fa-external-link-alt text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative overflow-hidden">
+        <!-- Tech background with circuit patterns -->
+        <div class="absolute inset-0 z-0" style="background-image: url('https://pixabay.com/get/g35d89a348ac8a392a6d855e00533d58cce7e848a8d03f33aee5eafe3f159281fa4aabdc270c486446e564697b6f0cd811911db318690046ac96648a0c0e30c6b_1280.jpg'); background-size: cover; background-position: center;">
+            <div class="absolute inset-0 bg-background/95 cyber-grid"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-tech font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                    <i class="fas fa-paper-plane mr-4"></i>GET IN TOUCH
+                </h2>
+                <p class="text-xl text-muted-foreground">Ready to collaborate? Let's create something amazing together.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <!-- Contact Form -->
+                <div class="glass-effect p-8 rounded-xl">
+                    <h3 class="text-2xl font-semibold mb-6 text-primary">Send a Message</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Name</label>
+                            <input type="text" class="w-full px-4 py-3 bg-muted border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="Your full name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 bg-muted border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="your.email@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Subject</label>
+                            <select class="w-full px-4 py-3 bg-muted border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all">
+                                <option>Cybersecurity Consultation</option>
+                                <option>Photography Services</option>
+                                <option>Design Project</option>
+                                <option>Web Development</option>
+                                <option>General Inquiry</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 bg-muted border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none" placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-8 py-4 bg-gradient-to-r from-primary to-secondary text-primary-foreground rounded-lg font-semibold hover:shadow-lg hover:shadow-primary/25 transition-all hover-tilt">
+                            <i class="fas fa-rocket mr-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info & 3D Social Icons -->
+                <div class="space-y-8">
+                    <div class="glass-effect p-8 rounded-xl">
+                        <h3 class="text-2xl font-semibold mb-6 text-secondary">Let's Connect</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-envelope text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">Email</div>
+                                    <div class="text-muted-foreground">alex.chen@example.com</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-phone text-secondary text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">Phone</div>
+                                    <div class="text-muted-foreground">+1 (555) 123-4567</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-accent text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">Location</div>
+                                    <div class="text-muted-foreground">San Francisco, CA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3D Floating Social Icons -->
+                    <div class="glass-effect p-8 rounded-xl">
+                        <h4 class="text-xl font-semibold mb-6 text-accent">Follow My Journey</h4>
+                        <div class="grid grid-cols-4 gap-4">
+                            <a href="#" class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center text-white text-xl hover-tilt hover:shadow-lg hover:shadow-blue-500/25 transition-all animate-float">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="w-16 h-16 bg-gradient-to-br from-gray-800 to-black rounded-xl flex items-center justify-center text-white text-xl hover-tilt hover:shadow-lg hover:shadow-gray-500/25 transition-all animate-float" style="animation-delay: 0.5s;">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center text-white text-xl hover-tilt hover:shadow-lg hover:shadow-pink-500/25 transition-all animate-float" style="animation-delay: 1s;">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center text-white text-xl hover-tilt hover:shadow-lg hover:shadow-blue-400/25 transition-all animate-float" style="animation-delay: 1.5s;">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Response Time -->
+                    <div class="text-center p-6 glass-effect rounded-xl">
+                        <div class="text-2xl font-tech font-bold text-primary mb-2">< 24h</div>
+                        <div class="text-muted-foreground">Average Response Time</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-card border-t border-border">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="text-2xl font-tech font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4 md:mb-0">
+                    ALEX CHEN
+                </div>
+                <div class="text-muted-foreground text-center md:text-right">
+                    <p>&copy; 2024 Alex Chen. All rights reserved.</p>
+                    <p class="text-sm mt-1">Crafted with <span class="text-red-500">♥</span> using React & Three.js</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        (function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            let isLight = false;
+
+            themeToggle.addEventListener('click', function() {
+                isLight = !isLight;
+                if (isLight) {
+                    body.classList.add('light-mode');
+                    themeToggle.innerHTML = '<i class="fas fa-sun text-lg"></i>';
+                } else {
+                    body.classList.remove('light-mode');
+                    themeToggle.innerHTML = '<i class="fas fa-moon text-lg"></i>';
+                }
+            });
+        })();
+
+        // Smooth Scrolling for Navigation
+        (function() {
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        })();
+
+        // Scroll Progress Indicator
+        (function() {
+            const progressIndicator = document.querySelector('.scroll-indicator');
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.body.offsetHeight - window.innerHeight;
+                const scrollPercent = scrollTop / docHeight;
+                
+                progressIndicator.style.transform = `scaleX(${scrollPercent})`;
+            });
+        })();
+
+        // Intersection Observer for Animations
+        (function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = '0s';
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe sections for animations
+            const sections = document.querySelectorAll('section > div');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        })();
+
+        // Contact Form Submission
+        (function() {
+            const contactForm = document.querySelector('#contact form');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // TODO: Implement actual form submission logic
+                    // This would typically send data to a backend API
+                    
+                    // Simulate form submission
+                    const submitButton = this.querySelector('button[type="submit"]');
+                    const originalText = submitButton.innerHTML;
+                    
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+                    submitButton.disabled = true;
+                    
+                    setTimeout(() => {
+                        submitButton.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
+                        submitButton.classList.add('bg-green-500');
+                        
+                        setTimeout(() => {
+                            submitButton.innerHTML = originalText;
+                            submitButton.disabled = false;
+                            submitButton.classList.remove('bg-green-500');
+                            this.reset();
+                        }, 2000);
+                    }, 1500);
+                });
+            }
+        })();
+
+        // Project Filter Functionality
+        (function() {
+            const filterButtons = document.querySelectorAll('#projects button');
+            const projectCards = document.querySelectorAll('#projects .glass-effect');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active state from all buttons
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('bg-primary', 'text-primary-foreground');
+                        btn.classList.add('border', 'border-muted', 'text-muted-foreground');
+                    });
+                    
+                    // Add active state to clicked button
+                    this.classList.add('bg-primary', 'text-primary-foreground');
+                    this.classList.remove('border', 'border-muted', 'text-muted-foreground');
+                    
+                    // Filter logic would go here
+                    // TODO: Implement project filtering based on categories
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
